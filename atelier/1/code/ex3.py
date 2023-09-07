@@ -23,48 +23,49 @@ def racine_double(a:float ,b:float ,delta:float ,num:float) -> float:
         return ans
 
 def str_equation(a:float ,b:float ,c:float )->str:
+    eval = lambda i: ("+" if i > 0 else "") + str(i)
     if b == 0:
         if a == 1:
             if c == 0:
-                return "x² = 0"
+                return "x²=0"
             else:
-                return "x²+"+str(c)+"= 0"
+                return f"x²{eval(c)}=0"
         elif a == -1:
             if c == 0:
-                return "-x² = 0"
+                return "-x²=0"
             else:
-                return "-x²+"+str(c)+"= 0"
+                return f"-x²{eval(c)}=0"
         elif a == 0:
             if c == 0:
                 return "[ERR] no equation"
             else:
-                return str(c)+"= 0"
+                return f"{eval(c)}=0"
         else:
             if c == 0:
-                return str(a)+"x² = 0"
+                return f"{eval(a)}x²=0"
             else:
-                return str(a)+"x²+"+str(c)+"= 0"
+                return f"{eval(a)}x²{eval(c)}=0"
     else:
         if a == 1:
             if c == 0:
-                return "x²+"+str(b)+"x = 0"
+                return f"x²{eval(b)}x=0"
             else:   
-                return "x²+"+str(b)+"x+"+str(c)+"= 0"
+                return f"x²{eval(b)}x{eval(c)}=0"
         elif a == -1:            
             if c == 0:
-                return "-x²+"+str(b)+"x = 0"
+                return f"-x²{eval(b)}x=0"
             else: 
-                return "-x²+"+str(b)+"x+"+str(c)+"= 0"
+                return f"-x²{eval(b)}x{eval(c)}=0"
         elif a == 0:            
             if c == 0:
-                return str(b)+"x = 0"
+                return f"{eval(b)}x=0"
             else: 
-                return str(b)+"x+"+str(c)+"= 0"
+                return f"{eval(b)}x{eval(c)}=0"
         else:
             if c == 0:
-                return str(a)+"x²+"+str(b)+"x = 0"
+                return f"{eval(a)}x²{eval(b)}x=0"
             else: 
-                return str(a)+"x²+"+str(b)+"x+"+str(c)+"= 0"
+                return f"{eval(a)}x²{eval(b)}x{eval(c)}=0"
 
 
 def solution_equation(a:float ,b:float ,c:float)->str:
@@ -86,7 +87,8 @@ def funct_test ():
     solution_equation(-1,2,1)
     solution_equation(0,2,1)
     solution_equation(1,2,0)
-    solution_equation(12,2,0)
+    solution_equation(1,0,-4)
+    solution_equation(2,-1,-6)
 
 
 funct_test()
