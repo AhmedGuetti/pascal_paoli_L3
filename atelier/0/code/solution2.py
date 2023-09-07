@@ -1,57 +1,63 @@
 import random
- 
 
-valid_options = ["pierre", "papier", "ciseaux"]
+option = ['pierre', 'papier', 'ciseaux']
 
-def get_valid_answer(prompt, valid_options):
-    while True:
-        user_input = input(prompt).strip().upper()
-        if user_input in valid_options:
-            return user_input
+
+def get_player_choice (player_name):
+    choice = input("{nom} faîtes votre choix parmi (pierre, papier, ciseaux): ".format(nom=player_name))
+    while choice not in option :
         print("Je n'ai pas compris votre réponse")
+        print("Joueur ", player_name)
+        choice = input("{nom} faîtes votre choix parmi (pierre, papier, ciseaux): ".format(nom=player_name))
+    return choice
 
-def determine_winner(player1, player2):
-    if player1 == player2:
-        return "aucun de vous, vous êtes ex æquo"
-    wins = [('ciseaux', 'pierre'), ('pierre', 'papier'), ('papier', 'ciseaux')]
-    if (player1, player2) in wins:
-        return nom_joueur_2
-    return nom_joueur_1
 
-score_1 = 0
-score_2 = 0
-ppc = ["pierre", "papier", "ciseaux"]
-nombre_manche = 0
+def main ():
+    on_game = True
+    match = True
+    toure = 0
+    score_player1 = score_player2 = 0
+    while on_game:
+        choice_oponent =  input("Voulez-vous jouer contre l'ordinateur (Max 5 parties) O/N ? " ).upper()
+        while choice_oponent != 'O' and choice_oponent != 'N':
+            print("Je n'ai pas compris votre réponse")
+        player1 = input("Quel est votre nom ? ")
+        print("Bienvenu ",player1, " nous allons jouer ensemble \n")
+        if choice_oponent == 'O':
+            player2 = 'Machine'
+        else:
+            player2 = input("Quel est le nom du deuxième joueur ?")
+            print("Bienvenu ",player2, " nous allons jouer ensemble \n")
+        
+        while match:
+            toure += 1
+            player_choice1 = get_player_choice (player1)
+            if player2 == 'Machine':
+                player_choice2 = option[random.randint(0, 2)]
+            else:
+                player_choice2 = get_player_choice (player2)
+            print("Si on récapitule :",player1, player_choice1, "et", player2, player_choice2,"\n")
+            if option.index(player_choice1) == option.index(player_choice2):
+                print("aucun de vous, vous être ex æquo")
+            elif (option.index(player_choice1) + 2 ) % 3 == option.index(player_choice2):
+                print("le gagnant est",player1)
+                score_player1 += 1
+            else:
+                print("le gagnant est",player2)
+                score_player2 += 1
+            print("Les scores à l'issue de cette manche sont donc",player1, score_player1, "et", player2, score_player2, "\n")
+            if toure in range(1,5):
+                match = True
+            else:
+                match = False
+        check = input("Do you want to play again O/N ").upper()
+        while check != '0' and check != 'N':
+            check = input("Do you want to play again O/N ").upper()
+        if check == 'O':
+            on_game = True
+        else:
+            on_game = False
 
-response = get_valid_answer("Voulez-vous jouer contre l'ordinateur (Max 5 parties) O/N ? ", ['O', 'N'])
-nom_joueur_1 = input("Quel est votre nom ? ")
 
-if response == 'N':
-    nom_joueur_2 = input("Quel est le nom du deuxième joueur ? ")
-else:
-    nom_joueur_2 = 'Machine'
 
-while True:
-    nombre_manche += 1
-    choix_joueur_1 = get_valid_answer(f"{nom_joueur_1}, faîtes votre choix parmi (pierre, papier, ciseaux): ", ppc)
-
-    if nom_joueur_2 == 'Machine':
-        choix_joueur_2 = random.choice(ppc)
-    else:
-        choix_joueur_2 = get_valid_answer(f"{nom_joueur_2}, faîtes votre choix parmi (pierre, papier, ciseaux): ", ppc)
-
-    print(f"Récapitulation : {nom_joueur_1} a choisi {choix_joueur_1} et {nom_joueur_2} a choisi {choix_joueur_2}\n")
-
-    winner = determine_winner(choix_joueur_1, choix_joueur_2)
-    score_1 += (winner == nom_joueur_1)
-    score_2 += (winner == nom_joueur_2)
-
-    print(f"Le gagnant est {winner}")
-    print(f"Les scores à l'issue de cette manche sont donc {nom_joueur_1}: {score_1} et {nom_joueur_2}: {score_2}\n")
-
-    if nombre_manche == 5:
-        play_again = get_valid_answer(f"Souhaitez-vous refaire une partie {nom_joueur_1} contre {nom_joueur_2} ? (O/N): ", ['O', 'N'])
-        if play_again == 'N':
-            break
-
-print("Merci d'avoir joué ! A bientôt")
+main()
