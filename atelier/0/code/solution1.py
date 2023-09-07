@@ -101,6 +101,10 @@ while check == True:
             else:
                 if go == 'O':
                     check = True
+                    score_1 = 0
+                    nombre_manche = 0
+                    check = True
+                    score_2 = 0
                 if go == 'N':
                     check = False
                 false_answer = False
