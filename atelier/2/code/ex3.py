@@ -55,9 +55,5 @@ def main():
         randomlist.append(n)
         testing_unit(randomlist)
 
-    
-
-
-
 if __name__ == "__main__":
     main()

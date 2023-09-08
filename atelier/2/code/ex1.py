@@ -127,13 +127,21 @@ def test_exercice4 ():
 
 #Question 5
 
+# def moy_sub(L:list,e:int):
+#     new_list = []
+#     for element in range(len(L)):
+#         if element > e:
+#             new_list.append(element)
+#     return moyenne(new_list)
 def moy_sub(L:list,e:int):
-    new_list = []
-    for element in range(len(L)):
-        if element > e:
-            new_list.append(element)
-    return moyenne(new_list)
-
+    if len(L) != 0:
+        el_sup = nb_sup_1(L,e)
+        ans = 0
+        for element in L:
+            if element > e:
+                ans += element
+        return ans / el_sup
+    return -1
 
 def test_exercice5 ():
     print("TEST Moy_sub")
@@ -144,10 +152,11 @@ def test_exercice5 ():
 
 
 # Question 6
-''' 
-    Fonction pour trouver la valeur maximal d'un List
-'''
+
 def val_max(L:list)->int:
+    ''' 
+        Fonction pour trouver la valeur maximal d'un List
+    '''
     if len(L) != 0:
         max = L[0]
         for e in L:
@@ -206,4 +215,10 @@ def testing():
     test_exercice6()
     test_exercice7()
 
-testing()
+def main():
+    testing()
+
+
+
+if __name__ == "__main__":
+    main()
