@@ -29,20 +29,10 @@ DICT_IMC = {
 }
 
 def message_imc (imc: int)->str:
-    
     for (inf, sub), message in DICT_IMC.items():
         if inf <= imc and imc < sub:
             return message
     return "IMC doit etre superieur a 0"
-    
-
-
-
-    
-
-
-
-
 
 def func_test ():
     message = ''
