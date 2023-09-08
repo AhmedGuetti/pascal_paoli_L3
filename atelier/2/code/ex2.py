@@ -1,3 +1,4 @@
+import math
 '''
 Author: Ahmed Guetti
 Atelir: 2
@@ -71,10 +72,44 @@ def est_triee_2(lst:list)->int:
     i = 0
     lenght = len(lst)
     ans = True
-    while i < lenght or not ans:
+    while i < lenght - 1 or not ans:
         if lst[i] > lst[i+1]:
             ans = False
         i+=1
+    return ans
+
+
+
+def position_tri(lst:list,e:int)->int:
+    left = 0
+    right = len(lst) - 1
+    while left < right:
+        m = math.floor((left+right)/2)
+        if lst[m] < e:
+            left += m +1
+        elif lst[m] > e:
+            right -= m - 1
+        else:
+            return m
+    return -1
+
+# LIST = [12, 13, 14,16, 34,56,70]
+# ans = position_tri(LIST, 100)
+# print(ans)  
+
+
+#Question 5
+def a_repetitions(lst:list)->bool:
+    new_list = []
+    i = 0
+    lenght = len(lst)
+    ans = False
+    while i <  lenght:
+        if not (lst[i] in new_list):
+            new_list.append(lst[i])
+        else:
+            ans = True
+            break
     return ans
 
 
