@@ -79,17 +79,26 @@ def test_exercice1 ():
     print("[Type 2]Test somme 1111 : ", somme_2(lst2test1))
     print("[Type 3]Test somme 1111 : ", somme_3(lst2test1))
 
-test_exercice1()
+
 
 # Question3
 def moyenne (L:list)->float:
     lenght = len(L)
     moy = 0 
     if lenght != 0:
-        somme = somme_2()
-        moy = somme / lenght
-        return moy        
-    return 0
+        somme = somme_2(L)
+        moy = somme / lenght       
+    return moy
+
+def test_exercice3 ():
+    print("TEST MOYENNE")
+    #test liste vide
+    print("Test liste vide : ", moyenne([]))
+    #test somme 11111
+    lst2test1=[1,10,100, 1000,10000]
+    print("Test moyenne: ", moyenne(lst2test1))
+
+
 
 # Question 4
 def nb_sup_1(L:list,e:int):
@@ -107,6 +116,15 @@ def nb_sup_2(L:list,e:int):
     return count
 
 
+def test_exercice4 ():
+    print("TEST NB_SUB")
+    print("[Type 1] Test liste vide : ", nb_sup_1([],3))
+    print("[Type 2] Test liste vide : ", nb_sup_2([],3))
+    lst2test1=[1,10,100,12,32, 4, 1000,10000]
+    print("[Type 1]Test nb_sup : ", nb_sup_1(lst2test1, 3))
+    print("[Type 2]Test nb_sup  : ", nb_sup_2(lst2test1, 3))
+
+
 #Question 5
 
 def moy_sub(L:list,e:int):
@@ -115,6 +133,15 @@ def moy_sub(L:list,e:int):
         if element > e:
             new_list.append(element)
     return moyenne(new_list)
+
+
+def test_exercice5 ():
+    print("TEST Moy_sub")
+    print("Test liste vide : ", moy_sub([],3))
+    lst2test1=[1,10,100,12,32, 4, 1000,10000]
+    print("Test Moyen_sub : ", moy_sub(lst2test1, 3))
+
+
 
 # Question 6
 ''' 
@@ -128,6 +155,13 @@ def val_max(L:list)->int:
                 max = e
         return max
     return None
+
+
+def test_exercice6 ():
+    print("TEST val_max")
+    print("Test liste vide : ", val_max([]))
+    lst2test1=[1,10,100,12,32, 4, 1000,10000]
+    print("Test val_max : ", val_max(lst2test1))
 
 
 #Question 7
@@ -148,5 +182,28 @@ def val_max(L:list)->int:
 
 '''
 def ind_max(L:list)->int:
-   max_val = val_max(L)
-   return L.index(max_val)
+    max_val = val_max(L)
+    if not max_val is None:
+        return L.index(max_val)
+    return None
+
+def test_exercice7 ():
+    print("TEST ind_max")
+    print("Test liste vide : ", ind_max([]))
+    lst2test1=[1,10,100,12,32, 4, 1000,10000]
+    print("Test ind_max : ", ind_max(lst2test1))
+
+
+
+
+
+
+def testing():
+    test_exercice1()
+    test_exercice3()
+    test_exercice4()
+    test_exercice5()
+    test_exercice6()
+    test_exercice7()
+
+testing()

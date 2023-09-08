@@ -49,5 +49,36 @@ def nb_occurrences(lst:list,e:int)->int:
     return ans
 
 
+'''
+    une fonction qui retourn True si la llist est triee et False dans l'autre cas
+    Condition:
+        --> version 1: une parcours systématique (boucle for)
+        --> version 2: boucle while 
+        --> la list doit etre triee croissant
+'''
+
+def est_triee_1(lst:list)->int:
+    lenght = len(lst)
+    ans = True
+    if lenght != 0 and lenght != 1:
+        for i in range(len(lst)-1):
+            if lst[i] > lst[i+1]:
+                ans = False
+    return ans
+
+
+def est_triee_2(lst:list)->int:
+    i = 0
+    lenght = len(lst)
+    ans = True
+    while i < lenght or not ans:
+        if lst[i] > lst[i+1]:
+            ans = False
+        i+=1
+    return ans
+
+
+
+
 
 
