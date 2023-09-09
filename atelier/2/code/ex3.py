@@ -1,4 +1,3 @@
-import random
 '''
 Author: Ahmed Guetti
 Atelir: 2
@@ -6,19 +5,19 @@ date: 08/09/2023
 
 exercice 3
 '''
-
-
+import random
 def separer(L:list)->list:
     """
-        __summary__
-            __parameter__:
-                . L (list) the unsorted intial list
-            __return__:
-                .LSEP (list) a sorted list based of the negatif->null->positif
+    une fontion qui vas separe une list en trois categorie [negatif, null, positif]
+    exemple:
+        input:  [32,43,0,2,0,-1,32,-43,-5,2,0]
+        output: [-1,-43,-5,0,0,0,32,43,2,32,2]
 
-            __funcionality__:
-                this function use three list to keep track of all three 
-                value categorie then concatenate all three list into LESP
+    Args:
+        L (list): une Liste pour le separe
+
+    Returns:
+        list: la list resultat 
     """
     LSEP = []
     negatif =[] 
@@ -38,14 +37,17 @@ def separer(L:list)->list:
 
 
 def testing_unit (L:list):
+    """
+    une fontion de test tres simple 
+
+    Args:
+        L (list): une list pour le separe 
+    """
     print(f"[Init List] separe({L}) =====> {separer(L)}")
 
 def main():
     """
-        __summary__
-            the main function that have the testing unit and doesn't 
-            work when importing the module
-
+    la fonction main qui sera notre point d'enter pour tester tous les cas possible
     """
     list1 = [12,41,-43,0,-43,5,-6,0,12,55,-54,0]
     testing_unit(list1)

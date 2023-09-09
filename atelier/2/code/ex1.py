@@ -6,45 +6,6 @@ date: 08/09/2023
 exercice 1
 '''
 
-# Question 1
-
-'''
-
-
-solution 2:
-    def somme(L: list, test_type: float)->float:
-        lenght = len(L)
-        somme = 0
-        if test_type == 1:
-            for i in range(lenght):
-                somme += L[i]
-        elif test_type == 2:
-            for element in L:
-                somme+=element
-        elif test_type == 3:
-            i=0
-            while i < len(L):
-                somme += L[i]
-                i += 1
-        else:
-            return "[Test Type Error]"
-        return somme
-
-    def test_exercice1 ():
-        print("TEST SOMME")
-            #test liste vide
-        print("[Type 1] Test liste vide : ", somme([], 1))
-        print("[Type 2] Test liste vide : ", somme([], 2))
-        print("[Type 3] Test liste vide : ", somme([], 3))
-            #test somme 11111
-        lst2test1=[1,10,100, 1000,10000]
-        print("[Type 1]Test somme 1111 : ", somme(lst2test1, 1))
-        print("[Type 2]Test somme 1111 : ", somme(lst2test1, 2))
-        print("[Type 3]Test somme 1111 : ", somme(lst2test1, 3))
-'''
-
-
-
 def somme_1(L: list):
     somme = 0
     for i in range(len(L)):
@@ -64,9 +25,6 @@ def somme_3(L:list):
         indice += 1
     return somme
 
-
-
-#Question 2
 def test_exercice1 ():
     print("TEST SOMME")
     #test liste vide
@@ -133,6 +91,8 @@ def test_exercice4 ():
 #         if element > e:
 #             new_list.append(element)
 #     return moyenne(new_list)
+
+
 def moy_sub(L:list,e:int):
     if len(L) != 0:
         el_sup = nb_sup_1(L,e)
@@ -216,6 +176,9 @@ def testing():
     test_exercice7()
 
 def main():
+    """
+    la fonction main qui sera notre point d'enter pour tester tous les cas possible
+    """
     testing()
 
 
