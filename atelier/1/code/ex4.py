@@ -27,6 +27,4 @@ def func_test ():
     print("28,2,2020", end=" -------> ")
     print(date_est_valide(28,2,2020))
 
-    
-
 func_test()

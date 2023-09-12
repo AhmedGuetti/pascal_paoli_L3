@@ -31,23 +31,44 @@ def nb_occurrences(lst:list,e:int)->int:
             ans += 1
     return ans
 
-def est_triee_1(lst:list)->int:
+def est_triee_1(lst:list)->bool:
+    """
+     une fonction pour tester si une list est triee
+
+    Args:
+        lst (list): une list pour le tester la fonction sure
+
+    Returns:
+        bool: le resultat de la list
+    """
     lenght = len(lst)
     ans = True
     if lenght != 0 and lenght != 1:
         for i in range(len(lst)-1):
             if lst[i] > lst[i+1]:
                 ans = False
+                break
     return ans
 
 
-def est_triee_2(lst:list)->int:
+def est_triee_2(lst:list)->bool:
+    """
+     une fonction pour tester si une list est triee
+     V2
+
+    Args:
+        lst (list): une list pour le tester la fonction sure
+
+    Returns:
+        bool: le resultat de la list
+    """
     i = 0
     lenght = len(lst)
     ans = True
     while i < lenght - 1 or not ans:
         if lst[i] > lst[i+1]:
             ans = False
+            break
         i+=1
     return ans
 

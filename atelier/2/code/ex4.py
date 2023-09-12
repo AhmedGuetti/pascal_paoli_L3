@@ -7,7 +7,7 @@ exercice 4
 '''
 import matplotlib.pyplot as plt
 
-def histo(F:list)->list:
+def histo_v1(F:list)->list:
     """ 
     histo: Histogram d'un fonction mathematique autrement dite une list du nombre de 
             repetition d'un element dans un list
@@ -29,6 +29,36 @@ def histo(F:list)->list:
                 count += 1
         H[i] = count
     return H
+
+
+
+
+
+def histo(F:list)->list:
+    """ 
+    histo: Histogram d'un fonction mathematique autrement dite une list du nombre de 
+            repetition d'un element dans un list
+    exemple:
+        input:  L:=[6,5,6,7,4,2,1,5]  
+        output: [0, 1, 1, 0, 1, 2, 2]
+
+    Args:
+        F (list): une list qui represent une fonction mathematique f(1) = F[1] et ainsi de suite
+
+    Returns:
+        list: une list qui resresent le histogram de F
+    """    
+    H = [0 for i in range(max(F)+1) ] # H represente le Histogramme de F
+    # print(f"H = {H}")
+    # i = 0
+    for element in F:
+        # print(f"element = {element} it case hase been incremented {H[element]}")
+        H[element] += 1
+    return H
+
+
+
+
 
 
 def est_injective(F:list)->bool:
@@ -109,13 +139,13 @@ def afficheHisto(F:list):
         i -= 1
 
 
-    for i in range(max(F)):
-        if i ==  max(F) -1:
+    for i in range(max(F)+1):
+        if i ==  max(F):
             print("| --|", end="")
         else:
             print("| --", end="")
     print("\n")
-    for i in range(max(F)):
+    for i in range(max(F)+1):
         print(f"  {i} ", end ="")
     print("\n")
     
