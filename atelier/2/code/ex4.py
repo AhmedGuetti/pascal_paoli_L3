@@ -21,6 +21,9 @@ def histo_v1(F:list)->list:
     Returns:
         list: une list qui resresent le histogram de F
     """
+    if not F:
+        return []
+    # max_list  = max(F)
     H = [i for i in range(max(F))] # H represente le Histogramme de F
     for i in range(max(F)):
         count = 0
@@ -48,7 +51,12 @@ def histo(F:list)->list:
     Returns:
         list: une list qui resresent le histogram de F
     """    
+
+    if not F:
+        return []
+
     H = [0 for i in range(max(F)+1) ] # H represente le Histogramme de F
+# H = [0] * (max(F) + 1)
     # print(f"H = {H}")
     # i = 0
     for element in F:
@@ -72,11 +80,14 @@ def est_injective(F:list)->bool:
     Returns:
         bool: return True si F est injective et Flase dans l'autre cas
     """
+
+
     H = histo(F)
     ans = True
     for e in H:
         if e > 1:
             ans = False
+            break
     return ans
 
 
@@ -97,6 +108,7 @@ def est_surjective(F:list)->bool:
     for e in H:
         if e < 1:
             ans = False
+            break
     return ans
 
 
@@ -125,30 +137,33 @@ def afficheHisto(F:list):
     Args:
         F (list): une list qui represent une fonction mathematique f(1) = F[1] et ainsi de suite
     """
-    H = histo(F)
-    MAXOCC = max(H)
+    if not F:
+        print("List est vide !!")
+    else:
+        H = histo(F)
+        MAXOCC = max(H)
 
-    i = MAXOCC
-    while i > 0:
-        for e in range(len(H)):
-            if H[e] == 0 or H[e] < i:
-                print("    ", end="")
+        i = MAXOCC
+        while i > 0:
+            for e in range(len(H)):
+                if H[e] == 0 or H[e] < i:
+                    print("    ", end="")
+                else:
+                    print(' #  ', end="")
+            print("\n")
+            i -= 1
+
+
+        for i in range(max(F)+1):
+            if i ==  max(F):
+                print("| --|", end="")
             else:
-                print(' #  ', end="")
+                print("| --", end="")
         print("\n")
-        i -= 1
-
-
-    for i in range(max(F)+1):
-        if i ==  max(F):
-            print("| --|", end="")
-        else:
-            print("| --", end="")
-    print("\n")
-    for i in range(max(F)+1):
-        print(f"  {i} ", end ="")
-    print("\n")
-    
+        for i in range(max(F)+1):
+            print(f"  {i} ", end ="")
+        print("\n")
+        
 
 
 def afficheHisto_2(F:list):
@@ -189,7 +204,17 @@ def main():
     print(H)
     testing_fun(F1)
     afficheHisto(F1)
-    afficheHisto_2(F1)
+    # afficheHisto_2(F1)
+
+    F1=[]
+    H = histo(F1)
+    print(H)
+    testing_fun(F1)
+    afficheHisto(F1)
+    # afficheHisto_2(F1)
+
+    
+
 
 
 if __name__ == "__main__":
