@@ -31,8 +31,6 @@ def is_mail(str_arg:str)->(int, int):
         int (_type_): _description_
     """
 
-
-
     ans = (1,0)
     # pattern = r"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$"
     # check = re.match(pattern, str_arg) 
@@ -43,26 +41,35 @@ def is_mail(str_arg:str)->(int, int):
     if not str_arg.find('@'):
         ans = (0,2)
     elif not str_arg.find('.'):
-        ans = (0.4)
+        ans = (0,4)
     else:
-        username, domain = str_arg.split('@')
-        domain_name, dm = domain.split('.')
-        # print(f"username == {username}  ////// domain == {domain}")
-        # pattern_username = r"(?!^\.(?!\w|-).*\.{2,}\.$).*" for later
-        occuerence_of_dot_username = [i for i in range(len(username)) if username.startswith('.',i)]
-        # occuerence_of_ = [i for i in range(len(str_arg)) if str_arg.startswith('.',i)]
-        occuerence_of_dot_domain = [i for i in range(len(username)) if username.startswith('.',i)]
-
-        if occuerence_of_dot_username[0] == 1 or occuerence_of_dot_username[-1] == 1 or not username:
+        if not str_arg[0] == '@':
             ans = (0,1)
-        elif occuerence_of_dot_domain[0] == 1 or occuerence_of_dot_domain[-1] == 1 or not username:
-            ans = (0,3)
         else:
-            ans = (1,0)
+            username, domain = str_arg.split('@')
+
+            # print(f"username == {username}  ////// domain == {domain}")
+            # pattern_username = r"(?!^\.(?!\w|-).*\.{2,}\.$).*" for later
+
+            
+            # occuerence_of_dot_username = [i for i in range(len(username)) if username.startswith('.',i)]
+            # occuerence_of_dot_domain = [i for i in range(len(domain)) if domain.startswith('.',i)]
+
+            # print(occuerence_of_dot_username)
+            # any("".join([i,j]) in bad for i,j in zip(test,test[1:])) stackoverflow
+            two_point_username = any(True for i,j in zip(username, username[1:]) if i == j and i == '.')
+            two_point_domain = any(True for i,j in zip(domain, domain[1:]) if i == j and i == '.')
+
+            if two_point_username\
+                or username[0] == '.' or username[-1] == '.':
+                ans = (0,1)
+            elif domain[0] == 1 \
+                or domain[-1] == 1 \
+                or not domain and two_point_domain:
+                ans = (0,3)
+            else:
+                ans = (1,0)
     return ans 
-
-
-
 
 def testing_unit():
     """
@@ -88,6 +95,7 @@ def testing_unit():
         # doit renvoyer (0,2)
         # doit renvoyer (0,4)
         # doit renvoyer (0,1)
+
 
 
 def main():
