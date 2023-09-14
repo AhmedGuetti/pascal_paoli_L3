@@ -23,16 +23,19 @@ def is_mail(str_arg:str)->tuple:
         response = (1,0)
         i = 0 
         # this part parse the cors of the main
-        while str_arg[i] != '@':
+        finish = True
+        while str_arg[i] != '@' and finish:
             if i == 0 and str_arg[i] == '.':
                 response = (0,1)
-                break
+                finish = False
             elif i == len(str_arg)-1:
                 response = (0,2)
-                break
+                finish = False
+                
             elif str_arg[i] == '.' and str_arg[i+1] == '.':
                 response = (0,1)
-                break
+                finish = False
+                
             elif str_arg[i] == '.':
                 dot_exist = True
             i+=1
