@@ -3,16 +3,14 @@ import re
 def full_name(str_arg:str)->str:
     """
     une fonction qui return le nom formatted d'une manier propre
-
     Args:
         str_arg (str): le nom et prenom "nome prenom"
-
     Returns:
         str: le nom et prenom en Majuscule (NOM Prenom)
     """
     ans = str_arg.split(" ")
     ans[0] = ans[0].upper()
-    ans[1] = ans[1].capitalize()
+    ans[1] = ans[1].lower().capitalize()
     return " ".join(ans)
 
 def is_mail(str_arg:str)->(int, int):
@@ -43,28 +41,18 @@ def is_mail(str_arg:str)->(int, int):
     elif not str_arg.find('.'):
         ans = (0,4)
     else:
-        if not str_arg[0] == '@':
+        if str_arg[0] != '@':
             ans = (0,1)
         else:
             username, domain = str_arg.split('@')
-
-            # print(f"username == {username}  ////// domain == {domain}")
-            # pattern_username = r"(?!^\.(?!\w|-).*\.{2,}\.$).*" for later
-
-            
-            # occuerence_of_dot_username = [i for i in range(len(username)) if username.startswith('.',i)]
-            # occuerence_of_dot_domain = [i for i in range(len(domain)) if domain.startswith('.',i)]
-
-            # print(occuerence_of_dot_username)
-            # any("".join([i,j]) in bad for i,j in zip(test,test[1:])) stackoverflow
             two_point_username = any(True for i,j in zip(username, username[1:]) if i == j and i == '.')
             two_point_domain = any(True for i,j in zip(domain, domain[1:]) if i == j and i == '.')
 
             if two_point_username\
                 or username[0] == '.' or username[-1] == '.':
                 ans = (0,1)
-            elif domain[0] == 1 \
-                or domain[-1] == 1 \
+            elif domain[0] == '.' \
+                or domain[-1] == '.' \
                 or not domain and two_point_domain:
                 ans = (0,3)
             else:

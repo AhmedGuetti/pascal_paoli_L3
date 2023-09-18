@@ -1,55 +1,47 @@
-import re 
-def mots_Nlettres(lst_mot:list, n:int)->list:
-    ans =[]
-    for w in lst_mot:
-        if len(w) == n:
-            ans.append(w)
-    return ans
+import random
 
 
+def places_lettre(ch : str, mot : str) -> list:
+    return [i for i,e in enumerate(mot) if e == ch]
 
 
-def commence_par(mot:str, prefixe:str)->bool:
-    return True if re.search(f"^{re.escape(prefixe)}.*", mot) else False
+def outputStr(mot:str, lpos:list)-> str:
+    return ''.join([mot[i] if i in lpos else '-' for i in range(len(mot))])
 
 
-def finit_par(mot: str, suffixe: str) -> bool:
-    return True if re.search(f".*{re.escape(suffixe)}$", mot) else False
+def runGame():
+    lst =['paris','londres','madrid','berlin','new-york']
 
-
-
-def commence_par_v1(mot:str, prefixe:str)->bool:
-    return True if mot.find(prefixe) == 0 else False
-
-def finit_par_v1(mot:str, suffix:str)->bool:
-    return True if len(mot) - mot.find(suffix) == len(suffix) else False
-
-
-
-def commence_par_v2(mot:str, prefix:str)->bool:
-    i = 0
-    notfound = True
-    w_lenght = len(prefix)
-    ans  = True
-    while i < w_lenght and notfound:
-        if mot[i] != prefix[i]:
-            ans  = False
-            notfound = False
-        i += 1
-    return ans
-
-
-def finit_par_v2(mot:str, suffix:str)->bool:
-    ans = False
-    i = len(mot) - 1
-    j = len(suffix) - 1
-
-    
-
-    return ans
-            
-
-
+    lst_len = len(lst)
+    mot = lst[random.randint(1, lst_len)]
+    tentatives = 0
+    ans = []
+    lose = False
+    while tentatives < 5:
+        print(outputStr(mot, ans))
+        ch = input("Saisir une lettre\n")
+        place = places_lettre(ch, mot)
+        if place != []:
+            for m_i in places_lettre(ch, mot):
+                ans.append(m_i)
+        else:
+            if tentatives == 0:
+                lose = True
+            print(" ==========Y= ")
+            if tentatives>=1:
+                print(" ||/       |  ")
+            if tentatives>=2:
+                print(" ||        0  ")
+            if tentatives>=3:
+                print(" ||       /|\ ")
+            if tentatives>=4:
+                print(" ||       /|  ")
+            print("==============\n")
+            tentatives += 1
+    if lose:
+        print("YOU DIED !!")
+    else:
+        print("YOU WIN !!")
 
 
 
@@ -58,48 +50,21 @@ def testing_unit():
     """
         une fontion pour regrouper tous les test 
     """
-   
+    
     print("____________ Question 1 ____________")
 
-    st_mot=["jouer","bonjour", "punir", "jour", "aurevoir", "revoir", "pouvoir", "cour", "abajour",
-    "finir", "aimer"]
-    ans = mots_Nlettres(st_mot, 5)
-    print(f"ans = {ans}")
+    # mot = input("Entrer un mot\n")
+    # let = input("Entrer une lettre\n")
 
-    print("____________ Question 2 ____________")
-
-    for w in st_mot:
-        ans0 = commence_par(w, "aur")
-        ans1 = commence_par_v1(w, "aur")
-        ans2 = commence_par_v2(w, "aur")
-
-        if ans0:
-            print(f"[VERSION 0] {w} commence par 'aur'")
-             
-
-        if ans1:
-            print(f"[VERSION 1] {w} commence par 'aur'")
-             
-
-        if ans2:
-            print(f"[VERSION 2] {w} commence par 'aur'")
+    # print(places_lettre(let, mot))
+    # print(outputStr('bonjour',[])     )# -> '_ _ _ _ _ _ _'
+    # print(outputStr('bonjour',[0])    )# -> 'b _ _ _ _ _ _'
+    # print(outputStr('bonjour',[0,1,4]))# -> 'b o _ _ o _ _'
+    # print(outputStr('bon',[0,1,2])    )# -> 'b o n'
+    # print(outputStr('maman',[1,3])     )# -> '_ a _ a _'
 
 
-    print("____________ Question 3 ____________")
-
-    for w in st_mot:
-        ans0 = finit_par(w, "ir")
-        ans1 = finit_par_v1(w, "ir")
-        
-        if ans0:
-            print(f"[VERSION 0] {w} fini par 'ir'") 
-
-        if ans1:
-            print(f"[VERSION 1] {w} fini par 'ir'") 
-
-    
-
-
+    runGame()
 
 
 
@@ -109,6 +74,8 @@ def main():
     la fonction main qui sera notre point d'enter pour tester tous les cas possible
     """
     testing_unit()
+
+
 
 if __name__ == "__main__":
     main()
