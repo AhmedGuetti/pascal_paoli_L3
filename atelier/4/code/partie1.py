@@ -33,19 +33,43 @@ def mix_list_v2(list_to_mix:list):
 
 
 def choose_element_list(list_in_which_to_choose:list):
-    return list_in_which_to_choose[random.randint(0, len(list_in_which_to_choose) - 1)]
+    return  list_in_which_to_choose[random.randint(0, len(list_in_which_to_choose) - 1)] if len(list_in_which_to_choose)!= 0  else None
 
 def extract_elements_list(list_in_which_to_choose:list, int_nbr_of_element_to_extract:int):
     ans = []
-    L = list(list_in_which_to_choose)
-    for i in range(int_nbr_of_element_to_extract):
-        ran_index = random.randint(0, len(L) - 1)
-        elem = L.pop(ran_index)
-        ans.append(elem)
+
+    if int_nbr_of_element_to_extract > len(list_in_which_to_choose):
+        ans = list_in_which_to_choose
+    else:
+        L = list(list_in_which_to_choose)
+        for i in range(int_nbr_of_element_to_extract):
+            ran_index = random.randint(0, len(L) - 1)
+            elem = L.pop(ran_index)
+            ans.append(elem)
     return ans
 
-def extract_elements_list_v2(list_in_which_to_choose:list, int_nbr_of_element_to_extract:int):
-    return [choose_element_list(list_in_which_to_choose) for i in range(int_nbr_of_element_to_extract)]
+def extract_elements_list_v1(lst:list, k:int):
+    n = len(lst)
+    result = [None] * k
+    pool = list(lst)
+    for i in range(k):
+        j = random.randint(0,n - i - 1)
+        result[i] = pool[j]
+        pool[j] = pool[n - i - 1]
+    return result
+
+def extract_elements_list_v2(lst:list, k:int):
+    n = len(lst)
+    result = [None] * k
+    selected = set()
+    for i in range(k):
+        j = random.randint(0,n-1)
+        while j in selected:
+            j = random.randint(0,n-1)
+        selected.add(j)
+        result[i] = lst[j]
+    return result
+
 
 
 
@@ -79,7 +103,7 @@ def testing_unit():
     print("Exercice 4")
     # Test de votre code
     print('Liste de départ',lst_sorted)
-    sublist = extract_elements_list(lst_sorted,5)
+    sublist = extract_elements_list_v2(lst_sorted,5)
     print('La sous liste extraite est',sublist)
     print('Liste de départ après appel de la fonction est',lst_sorted)
 

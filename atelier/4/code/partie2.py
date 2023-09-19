@@ -84,7 +84,7 @@ def testing_unit_mix():
 
 def testing_unit_extract():
     lists_size =  [10, 500, 5000, 50000, 100000]
-    timeming = perf_extract(partie1.extract_elements_list, random.sample, lists_size, 10)
+    timeming = perf_extract(partie1.extract_elements_list_v2, random.sample, lists_size, 10)
     print(timeming[0])
     print(timeming[1])
 
