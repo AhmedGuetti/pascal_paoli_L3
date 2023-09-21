@@ -5,7 +5,7 @@ def Longeur (L:list):
 
 
 def findMin(L:list):
-    if not L:
+    if L==[]:
         raise Exception("[ERROR]: array must not be empty !!")
     if len(L) == 1:
         return L[0]
@@ -21,14 +21,14 @@ def ListPairs(L:list, Ltemp = [])->list:
     return ListPairs(L[:-1], Ltemp)
 
 
-def concat_list(L:list, concat = []):
+def concat_list(L:list, concato = []):
     if not L:
-        return concat
-    
+        return concato
+    if len(L) == 1:
+        
+        return  concato.extend(L[0])
+    return concat_list(L[:-1], concato.extend(L[-1]))
 
-
-    
-    
 
 
 def main():
@@ -36,9 +36,14 @@ def main():
     min = findMin(L)
     long = Longeur(L)
     paire = ListPairs(L)
+    concat = [[0,1],[2,3],[4],[6,7]]
+
+    
+
     print(min)
     print(long)
     print(paire)
+    print(concat)
 
 if __name__ == "__main__":
     main()
