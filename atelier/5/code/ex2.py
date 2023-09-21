@@ -24,10 +24,21 @@ def ListPairs(L:list, Ltemp = [])->list:
 def concat_list(L:list, concato = []):
     if not L:
         return concato
-    if len(L) == 1:
-        
-        return  concato.extend(L[0])
-    return concat_list(L[:-1], concato.extend(L[-1]))
+    # A = [1,2] B=[43,54] C=A+B ; A = A + B === A+=B == [1,2,43,54]
+    else:
+        concato += L[-1]
+    return concat_list(L[:-1], concato)
+
+
+
+
+
+
+
+def separe(lst:list)->(list,list):
+    # separe([1,20,2,4,5]) == ([1,5], [20,2,4]) 
+    res = ([], [])
+
 
 
 
@@ -36,7 +47,7 @@ def main():
     min = findMin(L)
     long = Longeur(L)
     paire = ListPairs(L)
-    concat = [[0,1],[2,3],[4],[6,7]]
+    concat = concat_list([[0,1],[2,3],[4],[6,7]]) # [0,1,2,3,4,6,7]
 
     
 
