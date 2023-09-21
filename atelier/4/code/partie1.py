@@ -9,8 +9,8 @@ def gen_list_random_int(int_nbr=10, int_binf=0, int_bsub=10)->list:
 
 def mix_list(list_to_mix:list):
     L = list(list_to_mix)
-    for i,e in enumerate(L):
-        j = m.floor(random.random()*(i+1))
+    for i in range(1,len(L)):
+        j = random.randint(0, i) # random()* (i+1)
         L[i] , L[j] = L[j] , L[i]
 
     return L
@@ -72,7 +72,24 @@ def extract_elements_list_v2(lst:list, k:int):
 
 
 
-
+def extract_elements_list_v3(lst:list, k:int):
+    n = len(lst)
+    result = [None] * k
+    if n <= 10 * k:
+        pool = list(lst)
+        for i in range(k):
+            j = random.randint(0,n - i - 1)
+            result[i] = pool[j]
+            pool[j] = pool[n - i - 1]
+    else:
+        selected = set()
+        for i in range(k):
+            j = random.randint(0,n-1)
+            while j in selected:
+                j = random.randint(0,n-1)
+            selected.add(j)
+            result[i] = lst[j]
+    return result
 
 
 
