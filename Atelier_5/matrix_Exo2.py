@@ -21,14 +21,11 @@ def matrice_traceV2(matrice:np.ndarray):
     return np.trace(matrice)
 
 
-def est_symetrique(matrice:np.ndarray)->bool:
-    ans = True
-    if np.transpose(matrice).shape != matrice.shape:
-        ans = False
-    else:
-        cond = np.transpose(matrice) == matrice
-        ans = cond.all()
-    return ans
+def est_symetrique(matrice: np.ndarray) -> bool:
+    return (np.transpose(matrice) == matrice).all()
+
+
+
 
 
 def produit_diagonal(matrice:np.ndarray):
