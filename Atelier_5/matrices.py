@@ -1,48 +1,18 @@
 import numpy as np
 
 
-# exemple 1
-print("______ EXEMPLE 1 ______")
-arr = np.array([[1, 2, 3], [4, 5, 6]])
-for x in arr:
-    print(x)
+def my_searchsorted(table: object, element: int) -> int:
+    """
+    Recherche un élément dans un tableau et renvoie son indice si trouvé, sinon -1.
 
+    Args:
+        table (object): Le tableau dans lequel effectuer la recherche.
+        element (int): L'élément à rechercher.
 
-print("______ EXEMPLE 2 ______")
-# exemple 2
-arr = np.array([[1, 2, 3], [4, 5, 6]])
-for x in arr:
-    for y in x:
-        print(y)
-
-
-print("______ EXEMPLE 3 ______")
-arr = np.array([6, 7, 8, 9])
-x = np.searchsorted(arr, 7)
-print(x)
-
-
-
-#Exemple d’usage de la fct where
-
-print("______ EXEMPLE 4 ______")
-arr = np.array([1, 2, 3, 4, 5, 4, 4])
-x = np.where(arr == 4)
-print(x)
-
-
-print("______ EXEMPLE 5: Addition des Matrices ______")
-
-A = np.array(([3,1],[6,4]))
-B = np.array(([1,8],[4,2]))
-A.shape == B.shape
-# true (vérification de la dimension)
-R = A + B
-print(R)
-
-
-def my_searchsorted(table : object, element : int)-> int:
-    l = len(table) 
+    Returns:
+        int: L'indice de l'élément s'il est trouvé, -1 sinon.
+    """
+    l = len(table)
     i = 0
     while i < l and table[i] != element:
         i += 1
@@ -51,46 +21,60 @@ def my_searchsorted(table : object, element : int)-> int:
             i = -1
     return i
 
+def my_where(table: object, element: int) -> list:
+    """
+    Recherche un élément dans un tableau et renvoie une liste d'indices où l'élément est trouvé.
 
-def my_where(table : object, element : int )-> list:
+    Args:
+        table (object): Le tableau dans lequel effectuer la recherche.
+        element (int): L'élément à rechercher.
+
+    Returns:
+        list: Liste des indices où l'élément est trouvé.
+    """
     ans = list()
-    for i,e in enumerate(table):
+    for i, e in enumerate(table):
         if e == element:
             ans.append(i)
     return ans
 
-def my_where_v2(table: object, e: int)->int:
-    return [i for i,c in enumerate(table) if c == e ]
+def my_where_v2(table: object, e: int) -> int:
+    """
+    Recherche un élément dans un tableau et renvoie une liste d'indices où l'élément est trouvé.
 
+    Args:
+        table (object): Le tableau dans lequel effectuer la recherche.
+        e (int): L'élément à rechercher.
 
-"""[
-    [1,2,3]
-    [3,4,5]
-    [6,7,8]
-]"""
+    Returns:
+        int: L'indice de l'élément s'il est trouvé, -1 sinon.
+    """
+    return [i for i, c in enumerate(table) if c == e]
 
+def my_add(tableA: object, tableB: object) -> object:
+    """
+    Additionne deux tableaux multidimensionnels.
 
+    Args:
+        tableA (object): Premier tableau à additionner.
+        tableB (object): Deuxième tableau à additionner.
 
-
-def my_add(tableA : object, tableB : object)-> object:
+    Returns:
+        object: Le tableau résultant de l'addition ou None si les dimensions ne correspondent pas.
+    """
     if len(tableA) != len(tableB):
         return None
 
     ans = list()
     row = list()
-    for ra,rb in zip(tableA, tableB):
+    for ra, rb in zip(tableA, tableB):
         if len(ra) != len(rb):
             return None
         for ca, cb in zip(ra, rb):
-            row.append(ca+cb)
+            row.append(ca + cb)
         ans.append(row)
         row = []
     return ans
-
-
-
-
-
 
 def main():
     print("______ Question 1 ______")
@@ -139,12 +123,6 @@ def main():
     slice3v2 = matr[0:2, [0,1]]
     print(f"slice 3 [2x2] depuis la gauche of mattr =\n {slice3} ")
     print(f"[VERSION 2]slice 3 [2x2] depuis la gauche of mattr =\n {slice3v2} ")
-
-
-
-    
-
-
 
 
 if __name__ == "__main__":
