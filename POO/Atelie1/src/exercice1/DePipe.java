@@ -6,7 +6,7 @@ public class DePipe extends de {
     public DePipe(String name, int nbFaces, int minValue) {
         super(name, nbFaces);
         if (minValue < 1 || minValue > nbFaces) {
-            System.err.println("Erreur : La valeur minimale doit être comprise entre 1 et le nombre de faces.");
+            System.err.println("[ERROR] : La valeur minimale doit être comprise entre 1 et le nombre de faces.");
             minValue = 1;
         }
         this.minValue = minValue;

@@ -5,10 +5,17 @@ import java.util.*;
 
 
 public class de {
-	private String name;
+	private final String name;
 	private int nbFaces;
 	private static int i = 0;
 	private static Random r = new Random();
+	
+
+	public de(String name, int nbFaces){
+		this.name = name;
+		setNbFaces(nbFaces);
+		++i;
+	}
 	
 	public de() {
 		this("De n°"+i, 6);
@@ -22,21 +29,16 @@ public class de {
 		this("De n°"+i, nbFaces);
 		++i;
 	}
-	public de(String name, int nbFaces){
-		this.name = name;
-		setNbFaces(nbFaces);
-		++i;
-	}
 	
-	int getNbFaces() {
+	public int getNbFaces() {
 		return this.nbFaces;
 	}
 	
-	String getName() {
+	public String getName() {
 		return this.name;
 	}
 	
-	void setNbFaces(int nbFaces) {
+	public void setNbFaces(int nbFaces) {
         if (nbFaces >= 3 && nbFaces <= 120) {
             this.nbFaces = nbFaces;
         } else {
@@ -45,7 +47,7 @@ public class de {
 	}
 	
 	public int lancer() {
-		int nbAleatoire= r.nextInt(this.nbFaces) ;
+		int nbAleatoire= r.nextInt(this.nbFaces) +1;
 		return nbAleatoire;	
 	}
 	
@@ -66,7 +68,7 @@ public class de {
 	
 	@Override
 	public String toString() {
-		return "nom: "+this.name+"/========/nbFaces: "+this.nbFaces;
+		return "nom: "+this.name+"\nnbFaces: "+this.nbFaces+"\n";
 	}
 	
 	// GeekforGeeks

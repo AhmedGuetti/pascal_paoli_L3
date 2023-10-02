@@ -76,6 +76,16 @@ public class Testing {
             System.out.println("Roll " + (i + 1) + ": " + result);
         }
 
+        
+        
+        DeDiffNames<String> deDiff = new DeDiffNames<>("Test", 4);
+        String[] names = {"Gagné", "Perdu", "Relancez", "Passez votre tour"};
+        deDiff.setNamesFaces(names);
+
+        String result = deDiff.lancerDiff();
+        System.out.println("Nouvelle maniere");
+        System.out.println(result);
+
     
     
     
