@@ -1,0 +1,21 @@
+1. il exist deux attributs :
+	public static final double E
+	public static final double PI
+	
+2. elles sont toutes statiques, ce qui signifie que vous n'avez 
+   pas besoin d'instancier un objet Math pour les utiliser
+   
+3. Math.random()
+	signature : static double random()
+	c'est une méthode de classe
+4. 	il exist 4 redéfinition du méthode  max 
+	public static int max(int a, int b)
+	public static long max(long a, long b)
+	public static float max(float a, loat b)
+	public static double max(double a, double b)
+
+5. 	a) int x= Math.max(5);-->[SYNTAX ERROR] max a deux parametre
+	--> The method max(int, int) in the type Math is not applicable for the arguments (int)
+	b) int x= Math.max(5,6); -->[VALID ] x = 6
+	
+	
