@@ -1,7 +1,7 @@
 package exercice1;
 import java.util.Random;
 
-public class DeEffetMemoire extends de {
+public class DeEffetMemoire extends De {
     private static int lastValue = -1;
     private Random random = new Random();
 

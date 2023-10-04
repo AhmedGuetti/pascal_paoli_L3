@@ -1,6 +1,6 @@
 package exercice1;
 
-public class DePipe extends de {
+public class DePipe extends De {
     private final int minValue;
 
     public DePipe(String name, int nbFaces, int minValue) {
