@@ -2,11 +2,11 @@ package exercice1;
 
 public class Testing {
     public static void main(String[] args) {
-        de de1 = new de();
-        de de2 = new de("My Custom Die");
-        de de3 = new de(12);
-        de de4 = new de("Another Die", 20);
-        de de5 = new de("Another Die", 20);
+        De de1 = new De();
+        De de2 = new De("My Custom Die");
+        De de3 = new De(12);
+        De de4 = new De("Another Die", 20);
+        De de5 = new De("Another Die", 20);
 
         // Get and print the number of faces of each die
         System.out.println(de1);

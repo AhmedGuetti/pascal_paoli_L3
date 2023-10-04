@@ -1,7 +1,7 @@
 package exercice1;
 import java.util.Random;
 
-public class DeDiffNames<T> extends de {
+public class DeDiffNames<T> extends De {
     private static Random r = new Random();
     private T[] namesFaces;
 

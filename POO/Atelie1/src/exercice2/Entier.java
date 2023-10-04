@@ -1,7 +1,5 @@
 package exercice2;
 
-import exercice1.de;
-
 public class Entier {
     private final int inf;
     private final int sup;
@@ -53,13 +51,13 @@ public class Entier {
     // GeekforGeeks
     @Override
     public boolean equals(Object obj) {
+        if (!(obj instanceof Entier) || obj == null) {
+            return false;
+        }
         if (this == obj) {
             return true;
         }
 
-        if (!(obj instanceof Entier)) {
-            return false;
-        }
         Entier entier = (Entier) obj;
         return valeur == entier.valeur && 
         		inf == entier.inf && 

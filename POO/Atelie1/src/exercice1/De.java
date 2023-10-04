@@ -4,28 +4,28 @@ import java.util.*;
 
 
 
-public class de {
+public class De {
 	private final String name;
 	private int nbFaces;
 	private static int i = 0;
 	private static Random r = new Random();
 	
 
-	public de(String name, int nbFaces){
+	public De(String name, int nbFaces){
 		this.name = name;
 		setNbFaces(nbFaces);
 		++i;
 	}
 	
-	public de() {
+	public De() {
 		this("De n°"+i, 6);
 		++i;
 	}
-	public de(String name) {
+	public De(String name) {
 		this(name, 6);
 		++i;
 	}
-	public de(int nbFaces) {
+	public De(int nbFaces) {
 		this("De n°"+i, nbFaces);
 		++i;
 	}
@@ -74,16 +74,15 @@ public class de {
 	// GeekforGeeks
 	@Override
     public boolean equals(Object o) {
+        if (!(o instanceof De) || o == null) { // o,getClass() != this,getClass()
+            return false;
+        }
         if (o == this) {
             return true;
         }
-        if (!(o instanceof de)) {
-            return false;
-        }
-        de c = (de) o;
-        // Compare the data members and return accordingly
-        return c.name == this.name
-                && c.nbFaces == this.nbFaces;
+        De c = (De) o;
+        return ((c.name.equals(this.name))
+                && (c.nbFaces == this.nbFaces));
     }
 	
 }

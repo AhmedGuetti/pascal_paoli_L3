@@ -2,7 +2,7 @@ package exercice1;
 import java.util.Random;
 
 public class DeEffetMemoire extends de {
-    private static int lastValue = -1; // Meme 0 ca marche 
+    private static int lastValue = -1;
     private Random random = new Random();
 
     public DeEffetMemoire(String name, int nbFaces) {
