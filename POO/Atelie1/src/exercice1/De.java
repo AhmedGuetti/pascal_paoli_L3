@@ -19,15 +19,12 @@ public class De {
 	
 	public De() {
 		this("De n°"+i, 6);
-		++i;
 	}
 	public De(String name) {
 		this(name, 6);
-		++i;
 	}
 	public De(int nbFaces) {
 		this("De n°"+i, nbFaces);
-		++i;
 	}
 	
 	public int getNbFaces() {
