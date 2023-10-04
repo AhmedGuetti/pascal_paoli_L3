@@ -5,9 +5,13 @@ public class DeEffetMemoire extends De {
     private static int lastValue = -1;
     private Random random = new Random();
 
-    public DeEffetMemoire(String name, int nbFaces) {
-        super(name, nbFaces);
-    }
+    
+    // Constructure
+    public DeEffetMemoire(String name, int nbFaces) {super(name, nbFaces);}
+    public DeEffetMemoire(String name) {super(name);}
+    public DeEffetMemoire(int nbFaces) {super(nbFaces);}
+    public DeEffetMemoire() {super();}
+    
 
     @Override
     public int lancer() {

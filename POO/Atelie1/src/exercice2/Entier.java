@@ -4,12 +4,7 @@ public class Entier {
     private final int inf;
     private final int sup;
     private int valeur;
-
-    public Entier(int inf, int sup) {
-        this.inf = inf;
-        this.sup = sup;
-        this.valeur = 0; 
-    }
+    
 
     public Entier(int inf, int sup, int valeurInitiale) {
         this.inf = inf;
@@ -17,11 +12,16 @@ public class Entier {
         setValeur(valeurInitiale);
     }
 
-    
-    	// SETTER
+    public Entier(int inf, int sup) {
+        this(inf, sup, 0);
+    }
+
+    // Getter
     public int getValeur() {return valeur;}
     public int getBorneMax() {return this.sup;}
 	public int getBorneMin() {return this.inf;}
+	
+	// Setter
     public void setValeur(int nouvelleValeur) {
         if (nouvelleValeur >= inf && nouvelleValeur <= sup) {
             valeur = nouvelleValeur;
@@ -30,6 +30,7 @@ public class Entier {
         }
     }
 
+    // Methodes 
     public void incrementer(int pas) {
         int nvaleur = valeur + pas;
         if (nvaleur >= inf && nvaleur <= sup) {
@@ -51,13 +52,10 @@ public class Entier {
     // GeekforGeeks
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Entier) || obj == null) {
+        if (!(obj instanceof Entier) || obj == null)
             return false;
-        }
-        if (this == obj) {
+        if (this == obj) 
             return true;
-        }
-
         Entier entier = (Entier) obj;
         return valeur == entier.valeur && 
         		inf == entier.inf && 
